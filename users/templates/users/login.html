@@ -1,0 +1,37 @@
+{% extends "cores/base.html" %}
+
+{% block title %}
+    Home
+{% endblock %}
+
+{% block content %}
+<!-- Display messages -->
+{% if messages %}
+<div class="container mt-3">
+    {% for message in messages %}
+        <div class="alert alert-{{ message.tags }}" role="alert">
+            {{ message }}
+        </div>
+    {% endfor %}
+</div>
+{% endif %}
+    <div class="container mt-5 bg-secondary border border mb-3">
+        <h1 class="text-center mb-4">Login</h1>
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <form class="form-group" action="{% url 'login' %}" method="POST">
+                    {% csrf_token %}
+                    {% load crispy_forms_tags %}
+                    {{ form|crispy }}
+                    {% if next %}
+                    <input type="hidden" name="next" value="{{ next }}">
+                    {% endif %}
+                    <div class="d-grid gap-2 mt-3">
+                        <button type="submit" class="btn btn-info mb-2">Login</button>
+                    </div>
+                      <p class="text-center  "><a href="{% url 'password_reset' %}" class="text-decoration-none">Forgot password</a></P>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,67 @@
+
+
+/* Increase the font size of the navbar links */
+.navbar-nav .nav-link {
+    font-size: 1.2rem; /* Adjust the size as needed */
+}
+
+
+/* Optional: Adjust the font size of the brand as well */
+.navbar-brand {
+    font-size: 1.5rem; /* Adjust the size as needed */
+}
+
+/* Base styles for larger screens (desktops and laptops) */
+.card-title {
+    font-size: 2rem; /* Default font size for larger screens */
+}
+
+.card-img {
+    width: 100%; /* Make images responsive */
+    height: auto; /* Maintain aspect ratio */
+}
+
+/* Styles for tablets and smaller laptops */
+@media (max-width: 1024px) {
+    .card-title {
+        font-size: 1.75rem;
+    }
+
+    .card-img {
+        width: 90%; /* Slightly reduce width for better spacing */
+    }
+}
+
+/* Styles for small tablets and large phones */
+@media (max-width: 768px) {
+    .card-title {
+        font-size: 1.5rem;
+    }
+
+    .card-img {
+        width: 80%; /* Further reduce width for smaller screens */
+    }
+}
+
+/* Styles for phones */
+@media (max-width: 576px) {
+    .card-title {
+        font-size: 1.25rem;
+    }
+
+    .card-img {
+        width: 70%; /* Adjust width for phone screens */
+    }
+}
+
+/* Styles for extra small devices (very small phones) */
+@media (max-width: 400px) {
+    .card-title {
+        font-size: 1rem;
+    }
+
+    .card-img {
+        width: 100%; /* Make image full width for very small devices */
+    }
+}
+

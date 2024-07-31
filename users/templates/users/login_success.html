@@ -1,0 +1,32 @@
+<!-- templates/users/login_success.html -->
+{% extends "cores/base.html" %}
+
+{% block title %}
+    Login Successful
+{% endblock %}
+
+{% block content %}
+    <!-- Display messages -->
+    {% if messages %}
+        <div class="container mt-3">
+            {% for message in messages %}
+                <div class="alert alert-{{ message.tags }}" role="alert">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+
+    <script>
+        // Redirect to the appropriate page after 3 seconds
+        setTimeout(function() {
+            {% if user.is_authenticated and user.choice == 'jobseeker' %}
+                window.location.href = "{% url 'index' %}";
+            {% elif user.is_authenticated and user.choice == 'employer' %}
+                window.location.href = "{% url 'E-dashboard' %}";
+            {% else %}
+                window.location.href = "{% url 'index' %}";  // Default redirect
+            {% endif %}
+        }, 3000);
+    </script>
+{% endblock %}

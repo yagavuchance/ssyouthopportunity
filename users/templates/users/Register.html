@@ -1,0 +1,35 @@
+<!-- templates/users/register.html -->
+{% extends "cores/base.html" %}
+
+{% block title %}
+    Home
+{% endblock %}
+
+{% block content %}
+    <!-- Add this block to render messages -->
+    {% if messages %}
+        <div class="container mt-3">
+            {% for message in messages %}
+                <div class="alert alert-{{ message.tags }}" role="alert">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+
+    <div class="container mt-5 bg-secondary border border mb-3">
+        <h1 class="text-center mb-4">Create Account</h1>
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <form class="form-group" action="" method="POST">
+                    {% csrf_token %}
+                    {% load crispy_forms_tags %}
+                    {{ form|crispy }}
+                    <div class="d-grid gap-2 mt-3">
+                        <button type="submit" class="btn btn-info mb-2">Create Account</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}

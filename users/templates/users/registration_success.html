@@ -1,0 +1,26 @@
+<!-- templates/users/registration_success.html -->
+{% extends "cores/base.html" %}
+
+{% block title %}
+    Registration Successful
+{% endblock %}
+
+{% block content %}
+    <!-- Add this block to render messages -->
+    {% if messages %}
+        <div class="container mt-3">
+            {% for message in messages %}
+                <div class="alert alert-{{ message.tags }}" role="alert">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+
+    <script>
+        // Redirect to the login page after 3 seconds
+        setTimeout(function(){
+            window.location.href = "{% url 'login' %}";
+        }, 3000);
+    </script>
+{% endblock %}

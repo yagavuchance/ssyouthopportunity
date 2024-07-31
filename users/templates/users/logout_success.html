@@ -1,0 +1,27 @@
+<!-- templates/users/login_success.html -->
+{% extends "cores/base.html" %}
+
+{% block title %}
+    Login Successful
+{% endblock %}
+
+{% block content %}
+    <!-- Display messages -->
+    {% if messages %}
+        <div class="container mt-3">
+            {% for message in messages %}
+                <div class="alert alert-{{ message.tags }}" role="alert">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+
+    <script>
+        // Redirect to the appropriate page after 3 seconds
+        setTimeout(function() {
+            
+                window.location.href = "{% url 'index' %}";  // Default redirect
+        }, 3000);
+    </script>
+{% endblock %}
