@@ -1,7 +1,7 @@
 {% extends "cores/base.html" %}
 
 {% block title %}
-    Home
+    Login
 {% endblock %}
 
 {% block content %}
@@ -15,23 +15,76 @@
     {% endfor %}
 </div>
 {% endif %}
-    <div class="container mt-5 bg-secondary border border mb-3">
-        <h1 class="text-center mb-4">Login</h1>
+
+<div class="login-background">
+    <div class="container mt-5">
         <div class="row justify-content-center">
-            <div class="col-md-6">
-                <form class="form-group" action="{% url 'login' %}" method="POST">
-                    {% csrf_token %}
-                    {% load crispy_forms_tags %}
-                    {{ form|crispy }}
-                    {% if next %}
-                    <input type="hidden" name="next" value="{{ next }}">
-                    {% endif %}
-                    <div class="d-grid gap-2 mt-3">
-                        <button type="submit" class="btn btn-info mb-2">Login</button>
+            <div class="col-md-8 col-lg-6">
+                <div class="card">
+                    <div class="card-header bg-info text-white">
+                        <h2 class="text-center">Login</h2>
                     </div>
-                      <p class="text-center  "><a href="{% url 'password_reset' %}" class="text-decoration-none">Forgot password</a></P>
-                </form>
+                    <div class="card-body">
+                        <form action="{% url 'login' %}" method="POST">
+                            {% csrf_token %}
+                            <div class="form-group position-relative">
+                                <label for="username">Username</label>
+                                <input type="text" name="username" class="form-control icon-input" placeholder="Enter your username">
+                            </div>
+                            <div class="form-group position-relative">
+                                <label for="password">Password</label>
+                                <input type="password" name="password" class="form-control icon-input password-input" placeholder="Enter your password" id="login_password">
+                                <i class="fa fa-eye password-toggle" id="password_toggle"></i>
+                            </div>
+                            {% if next %}
+                                <input type="hidden" name="next" value="{{ next }}">
+                            {% endif %}
+                            <div class="d-grid gap-2 mt-3">
+                                <button type="submit" class="btn btn-info mb-2">Login</button>
+                            </div>
+                            <p class="text-center"><a href="{% url 'password_reset' %}" class="text-decoration-none">Forgot password</a></p>
+                        </form>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
+</div>
+
+
+<script>
+     // Toggle password visibility
+     document.querySelectorAll('.password-toggle').forEach(toggle => {
+        toggle.addEventListener('click', function() {
+            const input = this.previousElementSibling;
+            const icon = this;
+            if (input.type === 'password') {
+                input.type = 'text';
+                icon.classList.replace('fa-eye', 'fa-eye-slash');
+            } else {
+                input.type = 'password';
+                icon.classList.replace('fa-eye-slash', 'fa-eye');
+            }
+        });
+    });
+</script>
+<style>
+    .position-relative {
+        position: relative;
+    }
+
+    .password-input {
+        padding-right: 40px; /* Space for the icon */
+    }
+
+    .password-toggle {
+        position: absolute;
+        top: 70%;
+        right: 10px; /* Adjust based on your design */
+        transform: translateY(-50%);
+        cursor: pointer;
+        color: #aaa;
+    }
+</style>
+
 {% endblock %}

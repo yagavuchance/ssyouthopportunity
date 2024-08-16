@@ -10,7 +10,7 @@
 </head>
 
 <body>
-  <nav class="navbar navbar-expand-lg bg-light" data-bs-theme="light">
+  <nav class="navbar navbar-expand-lg bg-dark" data-bs-theme="dark">
     <div class="container-fluid">
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor03" aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -90,8 +90,13 @@
                 </li>
               {% elif user.choice == 'employer' %}
                 <!-- Employer specific items -->
-                <li class="nav-item">
-                  <a class="nav-link" href="{% url 'post-jobs' %}">Create Post</a>
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Create Post</a>
+                  <div class="dropdown-menu">
+                    <a class="dropdown-item" href="{% url 'post-jobs' %}">Jobs</a>
+                    <a class="dropdown-item" href="{% url 'post-scholarship' %}">Scholarship</a>
+                    <a class="dropdown-item" href="{% url 'fellowship' %}">Fellowship</a>
+                  </div>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" href="{% url 'about' %}">About Us</a>
@@ -125,46 +130,29 @@
 {% block content %}
 
 {% endblock %}
-<!-- Footer -->
-<footer class="footer mt-auto py-3 bg-light border border-info">
-  <div class="container-fluid">
+<!-- Footer Section -->
+<footer class="footer bg-dark text-white mt-auto py-3">
+  <div class="container text-center">
     <div class="row">
-      <!-- About Section -->
-      <div class="col-md-4 text-center text-md-left">
-        <h5>About Us</h5>
-        <p class="text-muted">We are dedicated to providing the latest job, scholarship, and fellowship opportunities for African youth.</p>
-      </div>
-      <!-- Navigation Links -->
-      <div class="col-md-4 text-center">
-        <h5>Quick Links</h5>
-        <ul class="list-unstyled">
-          <li><a href="{% url 'index' %}" class="text-decoration-none text-muted">Home</a></li>
-          <li><a href="{% url 'jobs' %}" class="text-decoration-none text-muted">Jobs</a></li>
-          <li><a href="{% url 'scholarship' %}" class="text-decoration-none text-muted">Scholarships</a></li>
-          <li><a href="{% url 'fellowship' %}" class="text-decoration-none text-muted">Fellowships</a></li>
-          <li><a href="#" class="text-decoration-none text-muted">About Us</a></li>
-        </ul>
-      </div>
-      <!-- Contact Info -->
-      <div class="col-md-4 text-center text-md-right">
+      <div class="col-md-4 mb-3">
         <h5>Contact Us</h5>
-        <p class="text-muted">Email: info@gmail.com</p>
-        <p class="text-muted">Phone: +256786095124</p>
-        <div>
-          <a href="#" class="text-muted me-2"><i class="fab fa-facebook-f"></i></a>
-          <a href="#" class="text-muted me-2"><i class="fab fa-twitter"></i></a>
-          <a href="#" class="text-muted"><i class="fab fa-linkedin-in"></i></a>
-        </div>
+        <p>Email: info@example.com</p>
+        <p>Phone: +1234567890</p>
+      </div>
+      <div class="col-md-4 mb-3">
+        <h5>Follow Us</h5>
+        <a href="#" class="text-white me-2"><i class="fab fa-facebook-f"></i></a>
+        <a href="#" class="text-white me-2"><i class="fab fa-twitter"></i></a>
+        <a href="#" class="text-white"><i class="fab fa-linkedin-in"></i></a>
+      </div>
+      <div class="col-md-4 mb-3">
+        <h5>About Us</h5>
+        <p>We provide the latest opportunities for African youth to excel and achieve their goals.</p>
       </div>
     </div>
-    <div class="row mt-3">
-      <div class="col-12 text-center">
-        <p class="text-muted">&copy; 2024 Sukulu fi. All rights reserved.</p>
-      </div>
-    </div>
+    <p class="mb-0">&copy; 2024 Sukulu fi. All rights reserved.</p>
   </div>
 </footer>
-
 <!-- Include FontAwesome for social media icons -->
 
 

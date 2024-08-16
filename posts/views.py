@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .forms import JobForm
+from .forms import JobForm, ScholarshipForm
 from jobs.models import Jobs
 from django.contrib import messages
 
@@ -18,6 +18,20 @@ def Jobpost(request):
     else:
          form = JobForm()
     return render(request, 'posts/post-jobs.html',{'form':form})
+
+def scholarshippost(request):
+    if request.method == "POST":
+        form = ScholarshipForm(request.POST, request.FILES)
+        if form.is_valid():
+            job = form.save(commit=False)
+            job.created_by = request.user
+            job.save()
+            messages.success(request, f'scholarship posted successfully')
+            return redirect('login_success')
+            
+    else:
+         form = ScholarshipForm()
+    return render(request, 'posts/post-scholars.html',{'form':form})
 
 def post_success(request):
     return render(request, 'posts/posts_success.html')

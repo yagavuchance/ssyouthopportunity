@@ -1,30 +1,83 @@
+/* Base Styles */
 
+/* Ensure the footer stays at the bottom */
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+main {
+    flex: 1;
+}
+
+/* Navbar Styles */
 
 /* Increase the font size of the navbar links */
 .navbar-nav .nav-link {
     font-size: 1.2rem; /* Adjust the size as needed */
 }
 
-
-/* Optional: Adjust the font size of the brand as well */
+/* Adjust the font size of the brand */
 .navbar-brand {
     font-size: 1.5rem; /* Adjust the size as needed */
 }
 
-/* Base styles for larger screens (desktops and laptops) */
-.card-title {
-    font-size: 2rem; /* Default font size for larger screens */
+/* Hero Section Styles */
+
+.hero {
+    background: url('/media/images/sukulu_logo.png') no-repeat center center;
+    background-size: cover;
+    animation: fadeIn 2s ease-in-out;
 }
 
-.card-img {
-    width: 100%; /* Make images responsive */
-    height: auto; /* Maintain aspect ratio */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
 }
+
+/* Section Title Styles */
+
+.section-title {
+    color: #17a2b8;
+    border-bottom: 2px solid #17a2b8;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+    animation: slideInFromLeft 1s ease-in-out;
+}
+
+@keyframes slideInFromLeft {
+    from { transform: translateX(-100%); }
+    to { transform: translateX(0); }
+}
+
+/* Card Styles */
+
+/* Card hover effects */
+.card {
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Card Image Styles */
+
+/* Make images responsive */
+.card-img {
+    width: 100%;
+    height: auto;
+}
+
+/* Responsive Styles */
 
 /* Styles for tablets and smaller laptops */
 @media (max-width: 1024px) {
     .card-title {
         font-size: 1.75rem;
+        color: #17a2b8;
     }
 
     .card-img {
@@ -36,6 +89,7 @@
 @media (max-width: 768px) {
     .card-title {
         font-size: 1.5rem;
+        color: #17a2b8;
     }
 
     .card-img {
@@ -47,6 +101,7 @@
 @media (max-width: 576px) {
     .card-title {
         font-size: 1.25rem;
+        color: #17a2b8;
     }
 
     .card-img {
@@ -58,6 +113,7 @@
 @media (max-width: 400px) {
     .card-title {
         font-size: 1rem;
+        color: #17a2b8;
     }
 
     .card-img {
@@ -65,3 +121,33 @@
     }
 }
 
+/* Additional Animations and Transitions */
+
+/* Fade-in effect for sections */
+.section {
+    opacity: 0;
+    animation: fadeInSection 1.5s forwards;
+}
+
+@keyframes fadeInSection {
+    to { opacity: 1; }
+}
+
+/* Button hover effect */
+.btn:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    transform: translateY(-2px);
+    transition: all 0.3s;
+}
+
+/* Card footer styles */
+.card-footer {
+    background: #f8f9fa;
+    border-top: 1px solid #e9ecef;
+}
+
+/* List group item hover effect */
+.list-group-item:hover {
+    background-color: #f1f1f1;
+    transition: background-color 0.2s;
+}

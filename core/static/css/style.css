@@ -1,30 +1,158 @@
+/* Ensure the footer stays at the bottom */
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
 
+main {
+    flex: 1;
+}
 
+/* Sidebar Styles */
+.sidebar {
+    background-color: #121515;
+    padding: 15px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar-section {
+    background-color: #0c0b0b !important; /* Light grey background color */
+    padding: 15px; /* Padding for some space around the content */
+    border-radius: 5px; /* Rounded corners */
+    margin-bottom: 20px; /* Space between sections */
+}
+
+/* Ensuring styles are applied properly */
+.sidebar-section {
+    margin-bottom: 20px;
+}
+
+.sidebar-title {
+    font-size: 1.25rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.sidebar .list-group-item {
+    border: none;
+    padding: 10px;
+}
+
+.sidebar .list-group-item a {
+    color: #007bff;
+}
+
+.sidebar .list-group-item a:hover {
+    text-decoration: underline;
+}
+
+.social-icons a {
+    font-size: 1.5rem;
+    color: #007bff;
+}
+
+.social-icons a:hover {
+    color: #0056b3;
+}
+
+/* Navbar Styles */
 /* Increase the font size of the navbar links */
 .navbar-nav .nav-link {
     font-size: 1.2rem; /* Adjust the size as needed */
 }
 
-
-/* Optional: Adjust the font size of the brand as well */
+/* Adjust the font size of the brand */
 .navbar-brand {
     font-size: 1.5rem; /* Adjust the size as needed */
 }
 
-/* Base styles for larger screens (desktops and laptops) */
-.card-title {
-    font-size: 2rem; /* Default font size for larger screens */
+/* Ensure search button is visible and aligned properly */
+form.d-flex {
+    display: flex;
+    align-items: center;
+    margin-left: auto;
 }
 
+form.d-flex input.form-control {
+    flex-grow: 1;
+}
+
+form.d-flex button.btn-secondary {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 10px;
+}
+
+
+
+/* Carousel Caption Styles */
+.carousel-caption {
+    position: absolute !important;
+    top: 70% !important; /* Center vertically */
+    left: 50% !important; /* Center horizontally */
+    transform: translate(-50%, -50%) !important; /* Offset for proper centering */
+    text-align: center !important;
+    background: rgba(0, 0, 0, 0.5) !important; /* Semi-transparent background */
+    color: #fff !important;
+    width: 80% !important; /* Adjusted width for better centering */
+    padding: 10px !important;
+    border-radius: 10px !important;
+    box-sizing: border-box !important; /* Ensure padding is included in the width */
+    margin: 0 auto !important; /* Center the caption */
+    margin-bottom: 5px;
+}
+
+.carousel-item .carousel-caption h5 {
+    font-size: 2.75rem !important;
+    font-weight: bold !important;
+}
+
+.carousel-item .carousel-caption p {
+    font-size: 1.75rem !important;
+    margin: 0 !important;
+}
+
+/* Section Title Styles */
+.section-title {
+    color: #17a2b8;
+    border-bottom: 2px solid #17a2b8;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+    animation: slideInFromLeft 1s ease-in-out;
+}
+
+@keyframes slideInFromLeft {
+    from { transform: translateX(-100%); }
+    to { transform: translateX(0); }
+}
+
+/* Card Styles */
+/* Card hover effects */
+.card {
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Card Image Styles */
+/* Make images responsive */
 .card-img {
-    width: 100%; /* Make images responsive */
-    height: auto; /* Maintain aspect ratio */
+    width: 100%;
+    height: auto;
 }
 
+/* Responsive Styles */
 /* Styles for tablets and smaller laptops */
 @media (max-width: 1024px) {
     .card-title {
         font-size: 1.75rem;
+        color: #17a2b8;
     }
 
     .card-img {
@@ -36,6 +164,7 @@
 @media (max-width: 768px) {
     .card-title {
         font-size: 1.5rem;
+        color: #17a2b8;
     }
 
     .card-img {
@@ -47,6 +176,7 @@
 @media (max-width: 576px) {
     .card-title {
         font-size: 1.25rem;
+        color: #17a2b8;
     }
 
     .card-img {
@@ -58,6 +188,7 @@
 @media (max-width: 400px) {
     .card-title {
         font-size: 1rem;
+        color: #17a2b8;
     }
 
     .card-img {
@@ -65,3 +196,72 @@
     }
 }
 
+/* Additional Animations and Transitions */
+/* Fade-in effect for sections */
+.section {
+    opacity: 0;
+    animation: fadeInSection 1.5s forwards;
+}
+
+@keyframes fadeInSection {
+    to { opacity: 1; }
+}
+
+/* Button hover effect */
+.btn:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    transform: translateY(-2px);
+    transition: all 0.3s;
+}
+
+/* Card footer styles */
+.card-footer {
+    background: #f8f9fa;
+    border-top: 1px solid #e9ecef;
+}
+
+/* List group item hover effect */
+.list-group-item:hover {
+    background-color: #f1f1f1;
+    transition: background-color 0.2s;
+}
+
+/* Top Bar Styles */
+.bg-dark {
+    background-color: #343a40 !important;
+}
+
+.text-light {
+    color: #f8f9fa !important;
+}
+
+.text-light a {
+    color: #f8f9fa;
+}
+
+.text-light a:hover {
+    color: #e9ecef;
+}
+
+/* Footer Styles */
+.footer {
+    background-color: #343a40;
+    color: #f8f9fa;
+    padding: 20px 0;
+    text-align: center;
+}
+
+.footer a {
+    color: #f8f9fa;
+}
+
+.footer a:hover {
+    color: #e9ecef;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .navbar-nav .nav-link {
+        font-size: 1rem; /* Adjusted for smaller screens */
+    }
+}

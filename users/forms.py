@@ -3,25 +3,40 @@ from .models import CustomUser
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 from django.contrib.auth.forms import PasswordResetForm, SetPasswordForm
 
-class RegistrationForm(UserCreationForm):
+class EmployerRegistrationForm(UserCreationForm):
     class Meta:
         model = CustomUser
-        fields = ['choice','username', 'email', 'password1', 'password2']
+        fields = ['username', 'email', 'password1', 'password2']
         labels = {
-            'choice': 'Role',
             'username': 'Username',
             'email': 'Email',
             'password1': 'Password',
-            'password1': ' Confirm_Password',
-            
+            'password2': 'Confirm Password',
         }
         widgets = {
-            'choice': forms.Select(attrs={'class': 'form-control'}),
             'username': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Enter your username'}),
             'email': forms.EmailInput(attrs={'class': 'form-control', 'placeholder': 'Enter your email'}),
-            'password': forms.PasswordInput(attrs={'class': 'form-control', 'placeholder': 'Enter your password'}),
-            
+            'password1': forms.PasswordInput(attrs={'class': 'form-control', 'placeholder': 'Enter your password', 'id': 'id_password1'}),
+            'password2': forms.PasswordInput(attrs={'class': 'form-control', 'placeholder': 'Confirm your password', 'id': 'id_password2'}),
         }
+
+class JobseekerRegistrationForm(UserCreationForm):
+    class Meta:
+        model = CustomUser
+        fields = ['username', 'email', 'password1', 'password2']
+        labels = {
+            'username': 'Username',
+            'email': 'Email',
+            'password1': 'Password',
+            'password2': 'Confirm Password',
+        }
+        widgets = {
+            'username': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Enter your username'}),
+            'email': forms.EmailInput(attrs={'class': 'form-control', 'placeholder': 'Enter your email'}),
+            'password1': forms.PasswordInput(attrs={'class': 'form-control', 'placeholder': 'Enter your password', 'id': 'id_password1'}),
+            'password2': forms.PasswordInput(attrs={'class': 'form-control', 'placeholder': 'Confirm your password', 'id': 'id_password2'}),
+        }
+        
 class LoginForm(AuthenticationForm):
     class Meta:
         model = CustomUser

@@ -2,23 +2,38 @@ from django.contrib.auth.views import PasswordResetView, PasswordResetDoneView, 
 from django.urls import reverse_lazy
 from .forms import CustomPasswordResetForm, CustomSetPasswordForm
 from django.shortcuts import render, redirect
-from .forms import RegistrationForm,LoginForm
+from .forms import JobseekerRegistrationForm, EmployerRegistrationForm,LoginForm
 from django.contrib import messages
 from django.contrib.auth import authenticate, login,logout
 # Create your views here.
 
 def register(request):
-    if request.method == "POST":
-        form = RegistrationForm(request.POST)
+    if request.method == 'POST':
+        form_type = request.POST.get('form_type')
+        if form_type == 'jobseeker':
+            form = JobseekerRegistrationForm(request.POST)
+        else:
+            form = EmployerRegistrationForm(request.POST)
+
         if form.is_valid():
             form.save()
             username = form.cleaned_data.get('username')
-            messages.success(request, f'Account created for {username}. please login.')
+            messages.success(request, f'Account created for {username}. Please log in.')
             return redirect('login')
-    else:
-        form = RegistrationForm()
-    return render(request, 'users/register.html', {'form': form})
 
+        # Define the other form for the context in POST request
+        if form_type == 'jobseeker':
+            jobseeker_form = form
+            employer_form = EmployerRegistrationForm()
+        else:
+            employer_form = form
+            jobseeker_form = JobseekerRegistrationForm()
+        
+    else:
+         jobseeker_form = JobseekerRegistrationForm(prefix='jobseeker')
+         employer_form = EmployerRegistrationForm(prefix='employer')
+
+    return render(request, 'users/register.html', {'jobseeker_form': jobseeker_form, 'employer_form': employer_form})
 def registration_success(request):
     return render(request, 'users/login_success.html')
 
