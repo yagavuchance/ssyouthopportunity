@@ -13,12 +13,12 @@
                 <div class="row">
                     {% for fellowship in fellowship_list %}
                     <div class="col-md-6 mb-4">
-                        <div class="card h-100 border border-info">
+                        <div class="card h-100 border border-primary">
                             <img src="{{fellowship.image.url}}" class="card-img-top rounded mx-auto d-block mt-1" alt="..." style="width: 95%; height: 150px;">
                             <div class="card-body">
-                                <h5 class="card-title text-info"><strong>{{fellowship.title}}</strong></h5>
+                                <h5 class="card-title text-primary"><strong>{{fellowship.title}}</strong></h5>
                                 <p class="card-text">deadline: <strong>{{fellowship.deadline}}</strong></p>
-                                <a href="{{fellowship.link}}" class="btn btn-info">Apply</a>
+                                <a href="{{fellowship.link}}" class="btn btn-primary">Apply</a>
                             </div>
                         </div>
                     </div>
@@ -36,7 +36,7 @@
                     <h5 class="card-title">Recent Fellowships</h5>
                     <ul class="list-group list-group-flush">
                         {% for fellowship in fellowship_list %}
-                        <a class="text-decoration-none " href="{{fellowship.link}}"><li class="list-group-item text-info">{{ fellowship.title }}</li></a>
+                        <a class="text-decoration-none " href="{{fellowship.link}}"><li class="list-group-item text-primary">{{ fellowship.title }}</li></a>
                         {% endfor %}
                     </ul>
                 </div>

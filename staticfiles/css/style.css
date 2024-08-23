@@ -1,4 +1,4 @@
-/* Ensure the footer stays at the bottom */
+/* Base Layout for Footer Stickiness */
 body {
     display: flex;
     flex-direction: column;
@@ -18,14 +18,9 @@ main {
 }
 
 .sidebar-section {
-    background-color: #0c0b0b !important; /* Light grey background color */
-    padding: 15px; /* Padding for some space around the content */
-    border-radius: 5px; /* Rounded corners */
-    margin-bottom: 20px; /* Space between sections */
-}
-
-/* Ensuring styles are applied properly */
-.sidebar-section {
+    background-color: #0c0b0b !important;
+    padding: 15px;
+    border-radius: 5px;
     margin-bottom: 20px;
 }
 
@@ -58,17 +53,14 @@ main {
 }
 
 /* Navbar Styles */
-/* Increase the font size of the navbar links */
 .navbar-nav .nav-link {
-    font-size: 1.2rem; /* Adjust the size as needed */
+    font-size: 1.35rem; /* Default font size */
 }
 
-/* Adjust the font size of the brand */
 .navbar-brand {
-    font-size: 1.5rem; /* Adjust the size as needed */
+    font-size: 1.5rem;
 }
-
-/* Ensure search button is visible and aligned properly */
+/* Search Button Styles */
 form.d-flex {
     display: flex;
     align-items: center;
@@ -86,39 +78,98 @@ form.d-flex button.btn-secondary {
     margin-left: 10px;
 }
 
-
-
-/* Carousel Caption Styles */
-.carousel-caption {
-    position: absolute !important;
-    top: 80% !important; /* Center vertically */
-    left: 50% !important; /* Center horizontally */
-    transform: translate(-50%, -50%) !important; /* Offset for proper centering */
-    text-align: center !important;
-    background: rgba(0, 0, 0, 0.5) !important; /* Semi-transparent background */
-    color: #fff !important;
-    width: 80% !important; /* Adjusted width for better centering */
-    padding: 10px !important;
-    border-radius: 10px !important;
-    box-sizing: border-box !important; /* Ensure padding is included in the width */
-    margin: 0 auto !important; /* Center the caption */
-    margin-bottom: 5px;
+/* Responsive Navbar Font Sizes */
+@media (max-width: 1200px) {
+    .navbar-nav .nav-link {
+        font-size: 1.25rem; /* Slightly smaller font size */
+    }
 }
 
-.carousel-item .carousel-caption h5 {
-    font-size: 2.75rem !important;
-    font-weight: bold !important;
+@media (max-width: 1024px) {
+    .navbar-nav .nav-link {
+        font-size: 1.3rem; /* Increased font size for better readability */
+    }
 }
 
-.carousel-item .carousel-caption p {
-    font-size: 1.75rem !important;
-    margin: 0 !important;
+@media (max-width: 768px) {
+    .navbar-nav .nav-link {
+        font-size: 1.4rem; /* Larger font size for better readability */
+    }
 }
 
-/* Section Title Styles */
+@media (max-width: 576px) {
+    .navbar-nav .nav-link {
+        font-size: 1.5rem; /* Larger font size for very small screens */
+    }
+}
+
+/* Responsive Caption Styles */
+@media (max-width: 1200px) {
+    .carousel-caption {
+        padding: 12px !important;
+    }
+    .carousel-caption h5 {
+        font-size: 2.5rem !important;
+    }
+    .carousel-caption p {
+        font-size: 1.5rem !important;
+    }
+}
+
+@media (max-width: 1024px) {
+    .carousel-caption {
+        padding: 10px !important;
+    }
+    .carousel-caption h5 {
+        font-size: 2rem !important;
+    }
+    .carousel-caption p {
+        font-size: 1.25rem !important;
+    }
+}
+
+@media (max-width: 768px) {
+    .carousel-caption {
+        padding: 8px !important;
+        max-width: 95% !important;
+    }
+    .carousel-caption h5 {
+        font-size: 1.75rem !important;
+    }
+    .carousel-caption p {
+        font-size: 1rem !important;
+    }
+}
+
+@media (max-width: 576px) {
+    .carousel-caption {
+        padding: 6px !important;
+        max-width: 100% !important;
+    }
+    .carousel-caption h5 {
+        font-size: 1.5rem !important;
+    }
+    .carousel-caption p {
+        font-size: 0.875rem !important;
+    }
+}
+
+@media (max-width: 400px) {
+    .carousel-caption {
+        padding: 5px !important;
+    }
+    .carousel-caption h5 {
+        font-size: 1.25rem !important;
+    }
+    .carousel-caption p {
+        font-size: 0.75rem !important;
+    }
+}
+
+/* Additional Styling for Sections */
 .section-title {
-    color: #17a2b8;
-    border-bottom: 2px solid #17a2b8;
+    color: #0278f7;
+    border-bottom: 2px solid #0278f7;
     padding-bottom: 10px;
     margin-bottom: 20px;
     animation: slideInFromLeft 1s ease-in-out;
@@ -129,8 +180,6 @@ form.d-flex button.btn-secondary {
     to { transform: translateX(0); }
 }
 
-/* Card Styles */
-/* Card hover effects */
 .card {
     transition: transform 0.3s, box-shadow 0.3s;
 }
@@ -138,109 +187,6 @@ form.d-flex button.btn-secondary {
 .card:hover {
     transform: scale(1.05);
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-}
-
-/* Card Image Styles */
-/* Make images responsive */
-.card-img {
-    width: 100%;
-    height: auto;
-}
-
-/* Responsive Styles */
-/* Styles for tablets and smaller laptops */
-@media (max-width: 1024px) {
-    .card-title {
-        font-size: 1.75rem;
-        color: #17a2b8;
-    }
-
-    .card-img {
-        width: 90%; /* Slightly reduce width for better spacing */
-    }
-}
-
-/* Styles for small tablets and large phones */
-@media (max-width: 768px) {
-    .card-title {
-        font-size: 1.5rem;
-        color: #17a2b8;
-    }
-
-    .card-img {
-        width: 80%; /* Further reduce width for smaller screens */
-    }
-}
-
-/* Styles for phones */
-@media (max-width: 576px) {
-    .card-title {
-        font-size: 1.25rem;
-        color: #17a2b8;
-    }
-
-    .card-img {
-        width: 70%; /* Adjust width for phone screens */
-    }
-}
-
-/* Styles for extra small devices (very small phones) */
-@media (max-width: 400px) {
-    .card-title {
-        font-size: 1rem;
-        color: #17a2b8;
-    }
-
-    .card-img {
-        width: 100%; /* Make image full width for very small devices */
-    }
-}
-
-/* Additional Animations and Transitions */
-/* Fade-in effect for sections */
-.section {
-    opacity: 0;
-    animation: fadeInSection 1.5s forwards;
-}
-
-@keyframes fadeInSection {
-    to { opacity: 1; }
-}
-
-/* Button hover effect */
-.btn:hover {
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-    transform: translateY(-2px);
-    transition: all 0.3s;
-}
-
-/* Card footer styles */
-.card-footer {
-    background: #f8f9fa;
-    border-top: 1px solid #e9ecef;
-}
-
-/* List group item hover effect */
-.list-group-item:hover {
-    background-color: #f1f1f1;
-    transition: background-color 0.2s;
-}
-
-/* Top Bar Styles */
-.bg-dark {
-    background-color: #343a40 !important;
-}
-
-.text-light {
-    color: #f8f9fa !important;
-}
-
-.text-light a {
-    color: #f8f9fa;
-}
-
-.text-light a:hover {
-    color: #e9ecef;
 }
 
 /* Footer Styles */
@@ -259,9 +205,47 @@ form.d-flex button.btn-secondary {
     color: #e9ecef;
 }
 
-/* Responsive Styles */
+/* Responsive Styles for Other Elements */
+@media (max-width: 1024px) {
+    .card-title {
+        font-size: 1.75rem;
+        color: #17a2b8;
+    }
+
+    .card-img {
+        width: 90%;
+    }
+}
+
 @media (max-width: 768px) {
-    .navbar-nav .nav-link {
-        font-size: 1rem; /* Adjusted for smaller screens */
+    .card-title {
+        font-size: 1.5rem;
+        color: #17a2b8;
+    }
+
+    .card-img {
+        width: 80%;
+    }
+}
+
+@media (max-width: 576px) {
+    .card-title {
+        font-size: 1.25rem;
+        color: #17a2b8;
+    }
+
+    .card-img {
+        width: 70%;
+    }
+}
+
+@media (max-width: 400px) {
+    .card-title {
+        font-size: 1rem;
+        color: #17a2b8;
+    }
+
+    .card-img {
+        width: 100%;
     }
 }

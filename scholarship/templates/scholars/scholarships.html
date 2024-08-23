@@ -13,12 +13,12 @@
                 <div class="row">
                     {% for scholarship in scholarship_list %}
                     <div class="col-md-6 mb-4">
-                        <div class="card h-100 border border-info">
+                        <div class="card h-100 border border-primary">
                             <img src="{{scholarship.image.url}}" class="card-img-top rounded mx-auto d-block mt-1" alt="..." style="width: 95%; height: 150px;">
                             <div class="card-body">
-                                <h5 class="card-title text-info"><strong>{{scholarship.title}}</strong></h5>
+                                <h5 class="card-title text-primary"><strong>{{scholarship.title}}</strong></h5>
                                 <p class="card-text">deadline: <strong>{{scholarship.deadline}}</strong></p>
-                                <a href="{{scholarship.link}}" class="btn btn-info">Apply</a>
+                                <a href="{{scholarship.link}}" class="btn btn-primary">Apply</a>
                             </div>
                         </div>
                     </div>
@@ -36,7 +36,7 @@
                     <h5 class="card-title">Recent Scholarships</h5>
                     <ul class="list-group list-group-flush">
                         {% for scholarship in scholarship_list %}
-                        <a class="text-decoration-none " href="{{scholarship.link}}"><li class="list-group-item text-info">{{ scholarship.title }}</li></a>
+                        <a class="text-decoration-none " href="{{scholarship.link}}"><li class="list-group-item text-primary">{{ scholarship.title }}</li></a>
                         {% endfor %}
                     </ul>
                 </div>

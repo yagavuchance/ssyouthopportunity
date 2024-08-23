@@ -10,30 +10,37 @@ from django.contrib.auth import authenticate, login,logout
 def register(request):
     if request.method == 'POST':
         form_type = request.POST.get('form_type')
+        
         if form_type == 'jobseeker':
-            form = JobseekerRegistrationForm(request.POST)
+            form = JobseekerRegistrationForm(request.POST, prefix='jobseeker')
         else:
-            form = EmployerRegistrationForm(request.POST)
+            form = EmployerRegistrationForm(request.POST, prefix='employer')
 
         if form.is_valid():
-            form.save()
+            user = form.save(commit=False)
+            user.choice = form_type  # Set the user's role based on the form type
+            user.save()
             username = form.cleaned_data.get('username')
             messages.success(request, f'Account created for {username}. Please log in.')
             return redirect('login')
-
-        # Define the other form for the context in POST request
-        if form_type == 'jobseeker':
-            jobseeker_form = form
-            employer_form = EmployerRegistrationForm()
         else:
-            employer_form = form
-            jobseeker_form = JobseekerRegistrationForm()
-        
+            # If the form is invalid, maintain the current form state
+            if form_type == 'jobseeker':
+                jobseeker_form = form
+                employer_form = EmployerRegistrationForm(prefix='employer')
+            else:
+                employer_form = form
+                jobseeker_form = JobseekerRegistrationForm(prefix='jobseeker')
     else:
-         jobseeker_form = JobseekerRegistrationForm(prefix='jobseeker')
-         employer_form = EmployerRegistrationForm(prefix='employer')
+        jobseeker_form = JobseekerRegistrationForm(prefix='jobseeker')
+        employer_form = EmployerRegistrationForm(prefix='employer')
 
-    return render(request, 'users/register.html', {'jobseeker_form': jobseeker_form, 'employer_form': employer_form})
+    return render(request, 'users/register.html', {
+        'jobseeker_form': jobseeker_form,
+        'employer_form': employer_form,
+    })
+
+
 def registration_success(request):
     return render(request, 'users/login_success.html')
 

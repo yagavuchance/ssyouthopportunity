@@ -8,3 +8,4 @@ class CustomUser(AbstractUser):
         ('employer', 'Employer')
     )
     choice = models.CharField(max_length=10, choices=ROLE_CHOICES, default='jobseeker')
+    email = models.EmailField(unique=True, blank=False)  # Ensure email is required

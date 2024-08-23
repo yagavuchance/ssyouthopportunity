@@ -1,142 +1,106 @@
 {% extends "cores/base.html" %}
 
 {% block title %}
-    Create Account
+    Registration
 {% endblock %}
 
 {% block content %}
-    <!-- Add this block to render messages -->
-    {% if messages %}
-        <div class="container mt-3">
-            {% for message in messages %}
-                <div class="alert alert-{{ message.tags }}" role="alert">
-                    {{ message }}
-                </div>
-            {% endfor %}
+<!-- Display messages -->
+{% if messages %}
+<div class="container mt-3">
+    {% for message in messages %}
+        <div class="alert alert-{{ message.tags }}" role="alert">
+            {{ message }}
         </div>
-    {% endif %}
+    {% endfor %}
+</div>
+{% endif %}
+<div class="login-background bg-light">
+    <div class="row justify-content-center form-container">
+        <!-- Employer Registration Form -->
+        <div class="col-md-6 mt-2">
+            <div class="card">
+                <div class="card-header bg-primary text-white">
+                    <h2 class="text-center">Employer Registration</h2>
+                </div>
+                <div class="card-body">
+                    <form id="employerForm" action="{% url 'register' %}" method="POST">
+                        {% csrf_token %}
+                        {% load crispy_forms_tags %}
+                        {{ employer_form|crispy }}
+                        <input type="hidden" name="form_type" value="employer">
+                        <div class="form-group">
+                            <input type="checkbox" id="show_passwords_employer" class="form-check-input" onclick="togglePasswordVisibility('employer')">
+                            <label for="show_passwords_employer" class="form-check-label">Show passwords</label>
+                        </div>
+                        <div class="d-grid gap-2 mt-3">
+                            <button type="submit" class="btn btn-primary mb-2">Register as Employer</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
 
-    <div class="registration-background">
-        <div class="container mt-5">
-            <div class="row justify-content-center">
-                <div class="col-md-8 col-lg-6">
-                    <div class="card">
-                        <div class="card-header bg-info text-white">
-                            <h2 class="text-center">Create Account</h2>
+        <!-- Jobseeker Registration Form -->
+        <div class="col-md-6 mt-2 mb-2">
+            <div class="card">
+                <div class="card-header bg-primary text-white">
+                    <h2 class="text-center">Jobseeker Registration</h2>
+                </div>
+                <div class="card-body">
+                    <form id="jobseekerForm" action="{% url 'register' %}" method="POST">
+                        {% csrf_token %}
+                        {% load crispy_forms_tags %}
+                        {{ jobseeker_form|crispy }}
+                        <input type="hidden" name="form_type" value="jobseeker">
+                        <div class="form-group">
+                            <input type="checkbox" id="show_passwords_jobseeker" class="form-check-input" onclick="togglePasswordVisibility('jobseeker')">
+                            <label for="show_passwords_jobseeker" class="form-check-label">Show passwords</label>
                         </div>
-                        <div class="card-body">
-                            <div class="btn-group btn-group-toggle mb-3" data-toggle="buttons">
-                                <label class="btn btn-outline-info active" id="jobseeker-btn">
-                                    <input type="radio" name="options" id="option1" autocomplete="off" checked> Job Seeker
-                                </label>
-                                <label class="btn btn-outline-info" id="employer-btn">
-                                    <input type="radio" name="options" id="option2" autocomplete="off"> Employer
-                                </label>
-                            </div>
-                            <form action="" method="POST" id="jobseeker-form">
-                                {% csrf_token %}
-                                <div class="form-group">
-                                    <label for="username">Username</label>
-                                    <input type="text" name="username" class="form-control" placeholder="Enter your username">
-                                </div>
-                                <div class="form-group">
-                                    <label for="email">Email</label>
-                                    <input type="email" name="email" class="form-control" placeholder="Enter your email">
-                                </div>
-                                <div class="form-group position-relative">
-                                    <label for="password1">Password</label>
-                                    <input type="password" name="password1" class="form-control password-input" placeholder="Enter your password" id="id_password1">
-                                    <i class="fa fa-eye password-toggle" id="togglePassword1"></i>
-                                </div>
-                                <div class="form-group position-relative">
-                                    <label for="password2">Confirm Password</label>
-                                    <input type="password" name="password2" class="form-control password-input" placeholder="Confirm your password" id="id_password2">
-                                    <i class="fa fa-eye password-toggle" id="togglePassword2"></i>
-                                </div>
-                                <input type="hidden" name="form_type" value="jobseeker">
-                                <div class="d-grid gap-2 mt-3">
-                                    <button type="submit" class="btn btn-info">Create Account</button>
-                                </div>
-                            </form>
-                            <form action="" method="POST" id="employer-form" style="display:none;">
-                                {% csrf_token %}
-                                <div class="form-group">
-                                    <label for="username">Username</label>
-                                    <input type="text" name="username" class="form-control" placeholder="Enter your username">
-                                </div>
-                                <div class="form-group">
-                                    <label for="email">Email</label>
-                                    <input type="email" name="email" class="form-control" placeholder="Enter your email">
-                                </div>
-                                <div class="form-group position-relative">
-                                    <label for="password1">Password</label>
-                                    <input type="password" name="password1" class="form-control password-input" placeholder="Enter your password" id="id_password1_employer">
-                                    <i class="fa fa-eye password-toggle" id="togglePassword1Employer"></i>
-                                </div>
-                                <div class="form-group position-relative">
-                                    <label for="password2">Confirm Password</label>
-                                    <input type="password" name="password2" class="form-control password-input" placeholder="Confirm your password" id="id_password2_employer">
-                                    <i class="fa fa-eye password-toggle" id="togglePassword2Employer"></i>
-                                </div>
-                                <input type="hidden" name="form_type" value="employer">
-                                <div class="d-grid gap-2 mt-3">
-                                    <button type="submit" class="btn btn-primary mb-5">Create Account</button>
-                                </div>
-                            </form>
+                        <div class="d-grid gap-2 mt-3">
+                            <button type="submit" class="btn btn-primary mb-2">Register as Jobseeker</button>
                         </div>
-                    </div>
+                    </form>
                 </div>
             </div>
         </div>
     </div>
+</div>
 
-    <script>
-        document.getElementById('jobseeker-btn').addEventListener('click', function() {
-            document.getElementById('jobseeker-form').style.display = 'block';
-            document.getElementById('employer-form').style.display = 'none';
-            document.querySelector('.card-header').classList.replace('bg-primary', 'bg-info');
-            document.querySelector('#jobseeker-form .btn-info').style.display = 'block';
-            document.querySelector('#employer-form .btn-primary').style.display = 'none';
+{% block scripts %}
+<script>
+    function togglePasswordVisibility(formType) {
+        // Select all password fields within the form
+        var passwordFields = document.querySelectorAll(`#${formType}Form input[type="password"], #${formType}Form input[type="text"]`);
+        var checkbox = document.querySelector(`#show_passwords_${formType}`);
+    
+        passwordFields.forEach(function(field) {
+            // Toggle between 'text' and 'password'
+            if (field.type === 'password' && checkbox.checked) {
+                field.type = 'text';
+            } else if (field.type === 'text' && !checkbox.checked) {
+                field.type = 'password';
+            }
         });
-        document.getElementById('employer-btn').addEventListener('click', function() {
-            document.getElementById('jobseeker-form').style.display = 'none';
-            document.getElementById('employer-form').style.display = 'block';
-            document.querySelector('.card-header').classList.replace('bg-info', 'bg-primary');
-            document.querySelector('#jobseeker-form .btn-info').style.display = 'none';
-            document.querySelector('#employer-form .btn-primary').style.display = 'block';
-        });
+    }
+</script>
+{% endblock %}
 
-        document.querySelectorAll('.password-toggle').forEach(toggle => {
-            toggle.addEventListener('click', function() {
-                const input = this.previousElementSibling;
-                const icon = this;
-                if (input.type === 'password') {
-                    input.type = 'text';
-                    icon.classList.replace('fa-eye', 'fa-eye-slash');
-                } else {
-                    input.type = 'password';
-                    icon.classList.replace('fa-eye-slash', 'fa-eye');
-                }
-            });
-        });
-    </script>
+<style>
+    /* Adjust form container width and margins */
+    .form-container {
+        max-width: 90%; /* or any preferred width */
+        margin: 0 auto; /* Center the form horizontally */
+    }
 
-    <style>
-        .position-relative {
-            position: relative;
+    .card {
+        margin: 0 auto; /* Center the card horizontally */
+    }
+
+    @media (max-width: 768px) {
+        .form-container {
+            max-width: 100%; /* Full width on smaller screens */
         }
-
-        .password-input {
-            padding-right: 40px; /* Space for the icon */
-        }
-
-        .password-toggle {
-            position: absolute;
-            top: 70%;
-            right: 10px; /* Adjust based on your design */
-            transform: translateY(-50%);
-            cursor: pointer;
-            color: #aaa;
-        }
-    </style>
+    }
+</style>
 {% endblock %}

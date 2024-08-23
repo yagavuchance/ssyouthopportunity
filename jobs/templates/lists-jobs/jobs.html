@@ -13,14 +13,14 @@
                 <div class="row">
                     {% for job in jobs_list %}
                     <div class="col-md-6 mb-4">
-                        <div class="card h-100 border border-info">
+                        <div class="card h-100 border border-primary">
                             <img src="{{job.logo.url}}" class="card-img-top rounded mx-auto d-block mt-1" alt="..." style="width: 95%; height: 150px;">
                             <div class="card-body">
-                                <h4 class="card-title text-info"><strong>{{job.company}}</strong></h4>
+                                <h4 class="card-title text-primary"><strong>{{job.company}}</strong></h4>
                                 <h5 class="card-title"><strong>{{job.title}}</strong></h5>
-                                <p class="card-text"><i class="fas fa-map-marker-alt text-info"></i> <strong>{{ job.location }}</strong></p>
-                                <p class="card-text"><i class="fas fa-calendar-alt text-info"></i> Deadline: <strong>{{ job.deadline }}</strong></p>
-                                <a href="{% url 'description' job.id %}" class="btn btn-info">more info</a>
+                                <p class="card-text"><i class="fas fa-map-marker-alt text-primary"></i> <strong>{{ job.location }}</strong></p>
+                                <p class="card-text"><i class="fas fa-calendar-alt text-primary"></i> Deadline: <strong>{{ job.deadline }}</strong></p>
+                                <a href="{% url 'description' job.id %}" class="btn btn-primary">more info</a>
                                 {% if job.description_file %}
                                 <a href="{% url 'downloads' job.id %}"  class=" btn btn-primary ml-3">
                                     <i class="fa-solid fa-download"></i>
@@ -49,7 +49,7 @@
                     <h5 class="card-title">Recent Jobs</h5>
                     <ul class="list-group list-group-flush">
                         {% for job in jobs_list %}
-                        <a class="text-decoration-none" href="{{job.link}}"><li class="list-group-item text-info">{{ job.title }}</li></a>
+                        <a class="text-decoration-none" href="{{job.link}}"><li class="list-group-item text-primary">{{ job.title }}</li></a>
                         {% endfor %}
                     </ul>
                 </div>
