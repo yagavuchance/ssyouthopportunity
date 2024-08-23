@@ -19,7 +19,7 @@
     <div class="container mt-5">
         <div class="row justify-content-center">
             <!-- Login Form -->
-            <div class="col-md-6">
+            <div class="col-lg-6 col-md-8 col-sm-10">
                 <div class="card">
                     <div class="card-header bg-primary text-white">
                         <h2 class="text-center">Login</h2>
@@ -33,10 +33,10 @@
                                 <input type="checkbox" id="show_password" class="form-check-input">
                                 <label for="show_password" class="form-check-label">Show password</label>
                             </div>
-                            <p class='muted'>Dont have an acount <a class='text-decoration-none'href="{% url 'register'  %}">Create here</a></p>
+                            <p class='text-muted'>Don't have an account? <a class='text-decoration-none' href="{% url 'register' %}">Create one here</a></p>
                             <div class="d-grid gap-2 mt-3">
                                 <button type="submit" class="btn btn-primary mb-2">Login</button>
-                                <p class='text-center text-bold'><a class='text-decoration-none'href="{% url 'password_reset' %}">Forgot Password</a></p>
+                                <p class='text-center text-bold'><a class='text-decoration-none' href="{% url 'password_reset' %}">Forgot Password?</a></p>
                             </div>
                         </form>
                     </div>

@@ -22,7 +22,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-go666y+we9c1hh2i%z63cny@zq+-e#z9sz)f547rn)*=cl#rp3'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG =True
+DEBUG =False
 
 ALLOWED_HOSTS = ['127.0.0.1']
 
@@ -99,8 +99,11 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-EMAIL_HOST_USER = 'chancepediano@gmail.com'
-EMAIL_HOST_PASSWORD = 'lxtl ypub dgpo xlve'
+EMAIL_HOST_USER = 'chancepediano@gmail.com'  # Your email
+EMAIL_HOST_PASSWORD = 'lxtl ypub dgpo xlve'  # Your email password or app-specific password
+
+DEFAULT_FROM_EMAIL = 'chancepediano@gmail.com'  # Your email
+DEFAULT_TO_EMAIL = 'chancepediano@gmail.com'  # Your email (where you receive the form submissions)
 
 
 # Password validation

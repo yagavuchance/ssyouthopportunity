@@ -6,6 +6,16 @@
 {% endblock %}
 
 {% block content %}
+<!-- Display messages -->
+{% if messages %}
+<div class="container mt-3">
+    {% for message in messages %}
+        <div class="alert alert-{{ message.tags }}" role="alert">
+            {{ message }}
+        </div>
+    {% endfor %}
+</div>
+{% endif %}
 <div class="container mt-5">
     <div class="row">
         <div class="col-md-12 text-center mb-4">
@@ -56,22 +66,20 @@
             <p class="text-center text-muted">
                 If you have any questions or would like to get in touch, please feel free to contact us.
             </p>
-            <form>
-                <div class="mb-3">
-                    <label for="name" class="form-label">Name</label>
-                    <input type="text" class="form-control" id="name" placeholder="Your Name">
+            <form action="{% url 'about' %}" method="post"> <!-- Adjust action URL if needed -->
+                {% csrf_token %}
+                {% load crispy_forms_tags %}
+                <h1></h1>
+                {{ form|crispy }}
+                {{ form.media }}
+                <div class="d-grid gap-2 mt-3">
+                    <button type="submit" class="btn btn-primary mb-2">Send</button>
                 </div>
-                <div class="mb-3">
-                    <label for="email" class="form-label">Email</label>
-                    <input type="email" class="form-control" id="email" placeholder="Your Email">
-                </div>
-                <div class="mb-3">
-                    <label for="message" class="form-label">Message</label>
-                    <textarea class="form-control" id="message" rows="5" placeholder="Your Message"></textarea>
-                </div>
-                <button type="submit" class="btn btn-primary w-100 mb-5">Send Message</button>
             </form>
+            
         </div>
     </div>
 </div>
+
+
 {% endblock %}
