@@ -9,40 +9,36 @@
   <meta name="keywords" content="Opportunities, Jobs, Scholarships, Fellowships, African Youth">
   <meta name="author" content="Sukulu Fi">
 
-  <meta property="og:title" content="{% block title %}{% endblock %}">
+  <meta property="og:title" content="{% block title %}Default Title{% endblock %}">
   <meta property="og:description" content="Providing the latest opportunities for African youth to excel and achieve their goals.">
   <meta property="og:image" content="{% static 'images/logo.png' %}">
   <meta property="og:url" content="{{ request.build_absolute_uri }}">
   <meta name="twitter:card" content="summary_large_image">
 
-   <!-- Schema.org for Google -->
-   <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Organization",
-      "name": "Sukulu Fi",
-      "url": "{{ request.build_absolute_uri }}",
-      "logo": "{% static 'images/logo.png' %}",
-      "sameAs": [
-        "https://www.facebook.com/yourprofile",
-        "https://www.twitter.com/yourprofile",
-        "https://www.linkedin.com/in/yourprofile"
-      ],
-      "description": "Providing the latest opportunities for African youth to excel and achieve their goals."
-    }
-    </script>
-  
+  <!-- Schema.org for Google -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Sukulu Fi",
+    "url": "{{ request.build_absolute_uri }}",
+    "logo": "{% static 'images/logo.png' %}",
+    "sameAs": [
+      "https://www.facebook.com/yourprofile",
+      "https://www.twitter.com/yourprofile",
+      "https://www.linkedin.com/in/yourprofile"
+    ],
+    "description": "Providing the latest opportunities for African youth to excel and achieve their goals."
+  }
+  </script>
 
-  
-  <title>{% block title %}{% endblock %}</title>
+
   <link rel="stylesheet" href="{% static 'css/style.css' %}">
   <link rel="stylesheet" href="{% static 'css/slider.css' %}">
   <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
   <script src="{% static 'js/slider.js' %}"></script>
-   
- 
 </head>
 
 <body>
@@ -78,7 +74,7 @@
       </div>
     </div>
   </nav>
-  
+
   <nav class="navbar navbar-expand-lg bg-light" data-bs-theme="light">
     <div class="container-fluid">
       <a class="navbar-brand" href="#">
@@ -129,7 +125,6 @@
                 <a class="nav-link" href="{% url 'about' %}">About Us</a>
               </li>
             {% elif user.choice == 'employer' %}
-              
               <li class="nav-item">
                 <a class="nav-link" href="{% url 'about' %}">About Us</a>
               </li>
@@ -177,15 +172,22 @@
           <h5>Follow Us</h5>
           <a href="#" class="text-white me-2"><i class="fab fa-facebook-f"></i></a>
           <a href="#" class="text-white me-2"><i class="fab fa-twitter"></i></a>
-          <a href="#" class="text-white"><i class="fab fa-linkedin-in"></i></a>
+          <a href="#" class="text-white me-2"><i class="fab fa-linkedin-in"></i></a>
+          <a href="#" class="text-white me-2"><i class="fab fa-instagram"></i></a>
         </div>
         <div class="col-md-4 mb-3">
-          <h5>About Us</h5>
-          <p>We provide the latest opportunities for south sudanese youths to excel and achieve their goals.</p>
+          <h5>Newsletter</h5>
+          <form action="#" method="post">
+            <div class="input-group">
+              <input type="email" class="form-control" placeholder="Your email address" aria-label="Recipient's email" aria-describedby="button-addon2">
+              <button class="btn btn-secondary" type="submit" id="button-addon2">Subscribe</button>
+            </div>
+          </form>
         </div>
       </div>
-      <p class="mb-0">&copy; 2024 Sukulu fi. All rights reserved.</p>
+      <p class="mb-0">&copy; 2024 Sukulu Fi. All rights reserved.</p>
     </div>
   </footer>
+
 </body>
 </html>

@@ -53,55 +53,73 @@
       </div>
     </div>
   </nav>
-  
+
+  <!-- New Second Navigation Bar -->
   <nav class="navbar navbar-expand-lg bg-light" data-bs-theme="light">
     <div class="container-fluid">
       <a class="navbar-brand" href="#">
-        <img src="/media/images/sukulu logo.png" width="90" height="70" alt="" class="img-fluid">
+        <img src="/media/images/sukulu logo.png" width="90" height="70" alt="">
         <strong>SU<span>KULU FI</span></strong>
       </a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor03" aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
+      <div class="collapse navbar-collapse" id="navbarColor03">
         <ul class="navbar-nav me-auto">
           <li class="nav-item">
-            {% if user.choice == 'employer' %}
-              <a class="nav-link active" href="{% url 'E-dashboard' %}">Dashboard</a>
-            {% elif user.choice == 'jobseeker' %}
-              <a class="nav-link active" href="{% url 'index' %}">Home</a>
-            {% else %}
-              <a class="nav-link active" href="{% url 'index' %}">Home</a>
-            {% endif %}
+            <a class="nav-link active" href="{% url 'E-dashboard' %}">Dashboard
+              <span class="visually-hidden">(current)</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'index' %}">Home</a>
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Opportunities</a>
             <div class="dropdown-menu">
               <a class="dropdown-item" href="{% url 'jobs' %}">Jobs</a>
-              <a class="dropdown-item" href="{% url 'scholarship' %}">Scholarships</a>
-              <a class="dropdown-item" href="{% url 'fellowship' %}">Fellowships</a>
+              <a class="dropdown-item" href="{% url 'scholarship' %}">Scholarship</a>
+              <a class="dropdown-item" href="{% url 'fellowship' %}">Fellowship</a>
             </div>
           </li>
           {% if not user.is_authenticated %}
-            <li class="nav-item">
-              <a class="nav-link" href="{% url 'register' %}">Create Account</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="{% url 'login' %}">Login</a>
-            </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'register' %}">Create Account</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'login' %}">Login</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'about' %}">About Us</a>
+          </li>
+          {% elif user.is_authenticated %}
+          {% if user.choice == 'jobseeker' %}
+            <!-- Jobseeker specific items -->
             <li class="nav-item">
               <a class="nav-link" href="{% url 'about' %}">About Us</a>
             </li>
-          {% elif user.is_authenticated %}
+          {% elif user.choice == 'employer' %}
+            <!-- Employer specific items -->
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Create Post</a>
+              <div class="dropdown-menu">
+                <a class="dropdown-item" href="{% url 'post-jobs' %}">Jobs</a>
+                <a class="dropdown-item" href="{% url 'post-scholarship' %}">Scholarship</a>
+                <a class="dropdown-item" href="{% url 'fellowship' %}">Fellowship</a>
+              </div>
+            </li>
             <li class="nav-item">
               <a class="nav-link" href="{% url 'about' %}">About Us</a>
             </li>
           {% endif %}
+          {% endif %}
         </ul>
         {% if user.is_authenticated %}
-        <div class="dropdown ms-auto">
+        <div class="dropdown">
           <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
-            <i class="fa-regular fa-user">{{ user.username }}</i>
+            <i class="fa-regular fa-user">
+              {{ user.username }}
+            </i>
           </a>
           <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuLink">
             <li><a class="dropdown-item" href="#">Edit Profile</a></li>
@@ -147,5 +165,6 @@
       <p class="mb-0">&copy; 2024 Sukulu Fi. All rights reserved.</p>
     </div>
   </footer>
+
 </body>
 </html>
