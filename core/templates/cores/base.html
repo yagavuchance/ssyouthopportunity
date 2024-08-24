@@ -8,6 +8,31 @@
   <meta name="description" content="Sukulu Fi - Providing the latest opportunities for African youth to excel and achieve their goals.">
   <meta name="keywords" content="Opportunities, Jobs, Scholarships, Fellowships, African Youth">
   <meta name="author" content="Sukulu Fi">
+
+  <meta property="og:title" content="{% block title %}{% endblock %}">
+  <meta property="og:description" content="Providing the latest opportunities for African youth to excel and achieve their goals.">
+  <meta property="og:image" content="{% static 'images/logo.png' %}">
+  <meta property="og:url" content="{{ request.build_absolute_uri }}">
+  <meta name="twitter:card" content="summary_large_image">
+
+   <!-- Schema.org for Google -->
+   <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Sukulu Fi",
+      "url": "{{ request.build_absolute_uri }}",
+      "logo": "{% static 'images/logo.png' %}",
+      "sameAs": [
+        "https://www.facebook.com/yourprofile",
+        "https://www.twitter.com/yourprofile",
+        "https://www.linkedin.com/in/yourprofile"
+      ],
+      "description": "Providing the latest opportunities for African youth to excel and achieve their goals."
+    }
+    </script>
+  
+
   
   <title>{% block title %}{% endblock %}</title>
   <link rel="stylesheet" href="{% static 'css/style.css' %}">

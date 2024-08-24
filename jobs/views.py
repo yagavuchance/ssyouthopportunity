@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from .models import Jobs
+from django.views.generic import DetailView
 from django.http import FileResponse, Http404
 import os
 # Create your views here.

@@ -2,6 +2,8 @@ from django.db import models
 from django.core.exceptions import ValidationError
 from users.models import CustomUser
 from ckeditor.fields import RichTextField
+from django.urls import reverse
+from django.utils import timezone
 
 # Define your allowed extensions
 def validate_image_extension(value):
@@ -15,6 +17,7 @@ STATUS_CHOICES = [
     ('inactive', 'Inactive')
 ]
 
+
 class Jobs(models.Model):
     company = models.CharField(max_length=100)
     logo = models.ImageField(upload_to='images/', default='images/default.jpg', validators=[validate_image_extension])
@@ -26,6 +29,10 @@ class Jobs(models.Model):
     link = models.URLField(blank=True, null=True)
     status = models.CharField(max_length=10, choices=STATUS_CHOICES, default='active')
     created_by = models.ForeignKey(CustomUser, on_delete=models.CASCADE, default=True)
+    created_at = models.DateTimeField(default=timezone.now, editable=False)  # New field
 
     def __str__(self):
         return self.title
+    
+    def get_absolute_url(self):
+       return reverse('description', args=[str(self.id)])

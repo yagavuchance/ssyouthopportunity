@@ -1,0 +1,105 @@
+/* Ensure the table container is responsive */
+.table-responsive {
+    overflow-x: auto; /* Allows horizontal scrolling */
+    margin-bottom: 1rem; /* Adds margin below the table */
+}
+
+/* Style for table cells to prevent overflow and improve readability */
+.table th, .table td {
+    white-space: nowrap; /* Prevents text from wrapping in table cells */
+}
+
+/* Ensure the table takes up full width */
+.table {
+    width: 100%;
+}
+
+/* Adjust button sizes for smaller screens */
+.btn {
+    font-size: 0.75rem; /* Adjust font size */
+    padding: 0.25rem 0.5rem; /* Adjust padding */
+}
+
+/* Style for table header on smaller screens */
+.table thead th {
+    font-size: 0.875rem; /* Adjust font size for table headers */
+}
+
+/* Add spacing between table rows on smaller screens */
+.table tbody tr {
+    margin-bottom: 0.5rem; /* Adds margin between rows */
+}
+
+/* Make sure modal content is responsive */
+.modal-content {
+    max-width: 100%; /* Ensure modal content doesn't exceed viewport width */
+}
+
+/* Add padding for container */
+.container-fluid {
+    padding: 1rem; /* Adds padding inside the container */
+}
+
+/* Responsive adjustments for very small screens */
+@media (max-width: 576px) {
+    .table {
+        font-size: 0.75rem; /* Reduce font size for very small screens */
+    }
+
+    .btn {
+        font-size: 0.65rem; /* Further reduce button font size */
+        padding: 0.2rem 0.4rem; /* Adjust button padding */
+    }
+
+    .table thead th {
+        font-size: 0.75rem; /* Further reduce table header font size */
+    }
+}
+
+/* Responsive adjustments for small screens */
+@media (min-width: 576px) and (max-width: 768px) {
+    .table {
+        font-size: 0.85rem; /* Reduce font size for small screens */
+    }
+
+    .btn {
+        font-size: 0.7rem; /* Adjust button font size */
+        padding: 0.2rem 0.4rem; /* Adjust button padding */
+    }
+
+    .table thead th {
+        font-size: 0.8rem; /* Adjust table header font size */
+    }
+}
+
+/* Responsive adjustments for medium screens */
+@media (min-width: 768px) and (max-width: 992px) {
+    .table {
+        font-size: 0.9rem; /* Slightly increase font size for medium screens */
+    }
+
+    .btn {
+        font-size: 0.75rem; /* Adjust button font size */
+        padding: 0.25rem 0.5rem; /* Adjust button padding */
+    }
+
+    .table thead th {
+        font-size: 0.85rem; /* Adjust table header font size */
+    }
+}
+
+/* Responsive adjustments for large screens */
+@media (min-width: 992px) {
+    .table {
+        font-size: 1rem; /* Default font size for large screens */
+    }
+
+    .btn {
+        font-size: 0.75rem; /* Default button font size */
+        padding: 0.25rem 0.5rem; /* Default button padding */
+    }
+
+    .table thead th {
+        font-size: 0.875rem; /* Default table header font size */
+    }
+}
