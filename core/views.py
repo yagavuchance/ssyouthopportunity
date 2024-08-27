@@ -9,7 +9,7 @@ from django.core.mail import send_mail
 # Create your views here.
 
 def index(request):
-    jobs_list = Jobs.objects.filter(status ='active')
+    jobs_list = Jobs.objects.filter(status ='active').order_by('-created_at')
     scholarship_list = Scholarship.objects.all()[:4]
     fellowship_list = Fellowship.objects.all()[:5]
     context= {

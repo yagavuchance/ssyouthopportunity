@@ -65,16 +65,19 @@
                                 <h5 class="card-title text-primary"><strong>{{ job.title }}</strong></h5>
                                 <p class="card-text"><i class="fas fa-map-marker-alt text-primary"></i> <strong>{{ job.location }}</strong></p>
                                 <p class="card-text"><i class="fas fa-calendar-alt text-primary"></i> Deadline: <strong>{{ job.deadline }}</strong></p>
+                                {% if job.description %}
                                 <a href="{% url 'description' job.id %}" class="btn btn-primary">More Info</a>
+                                {% else %}
+                                {%endif%}
                             {% if request.user.is_authenticated %}
                                 {% if job.description_file %}
                                 <a href="{% url 'downloads' job.id %}" class="btn btn-danger ml-3">
-                                    <i class="fa-solid fa-download"></i>
+                                  Download
                                 </a>
                                 {% endif %}
                             {% else %}
                                 <a href="{% url 'login' %}?next={% url 'downloads' job.id %}" class="btn btn-danger ml-3">
-                                    <i class="fa-solid fa-download"></i>
+                                    Download
                                 </a>
                            {% endif %}
                             </div>

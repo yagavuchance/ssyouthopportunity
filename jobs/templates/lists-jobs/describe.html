@@ -10,7 +10,11 @@
       <h2 class="card-title"><strong>{{describe.company}}</strong></h3>
       <h6 class="card-title"><strong>{{describe.title}}</strong></h6>
       <p class="card-text">{{describe.description|safe}}</p>
+      {% if describe.link %}
       <a href="{{describe.link}}" class="btn btn-primary">Apply</a>
+      {%else%}
+       <p> download the job description from the page for more details and application process</p>
+      {%endif%}
     </div>
   </div>
 {% endblock %}
