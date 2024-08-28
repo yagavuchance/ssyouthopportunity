@@ -18,9 +18,13 @@ from django.contrib import admin
 from django.urls import path,include, re_path
 from django.conf import settings
 from django.views.static import serve
+from django.contrib.sitemaps.views import sitemap
+from mysite.sitemap import JobSitemap 
 
 
-
+sitemaps = {
+    'jobs': JobSitemap,
+}
 
 
 urlpatterns = [
@@ -34,6 +38,7 @@ urlpatterns = [
     path('users/', include('users.urls')),
     path('employer/', include('employer.urls')),
     path('posts/', include('posts.urls')),
+    path('sitemap.xml', sitemap, {'sitemaps': sitemaps}, name='django.contrib.sitemaps.views.sitemap'),
     
     
      

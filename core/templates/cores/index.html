@@ -69,17 +69,12 @@
                                 <a href="{% url 'description' job.id %}" class="btn btn-primary">More Info</a>
                                 {% else %}
                                 {%endif%}
-                            {% if request.user.is_authenticated %}
+            
                                 {% if job.description_file %}
                                 <a href="{% url 'downloads' job.id %}" class="btn btn-danger ml-3">
                                   Download
                                 </a>
                                 {% endif %}
-                            {% else %}
-                                <a href="{% url 'login' %}?next={% url 'downloads' job.id %}" class="btn btn-danger ml-3">
-                                    Download
-                                </a>
-                           {% endif %}
                             </div>
                             <div class="card-footer text-muted">
                                 <small>Created by {{ job.created_by }}</small>

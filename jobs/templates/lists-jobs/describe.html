@@ -1,20 +1,74 @@
 {% extends "cores/base.html" %}
 
 {% block title %}
-   Home
+   Job Description
 {% endblock %}
+
 {% block content %}
-<div class="card border-light mb-3 " style="max-width: 100%;">
-    <div class="card-header text-center ">JOB DESCRIPTION</div>
-    <div class="card-body">
-      <h2 class="card-title"><strong>{{describe.company}}</strong></h3>
-      <h6 class="card-title"><strong>{{describe.title}}</strong></h6>
-      <p class="card-text">{{describe.description|safe}}</p>
-      {% if describe.link %}
-      <a href="{{describe.link}}" class="btn btn-primary">Apply</a>
-      {%else%}
-       <p> download the job description from the page for more details and application process</p>
-      {%endif%}
+<section class="job-description-container">
+    <header class="job-description-header text-center mb-4">
+        <h1>Job Description</h1>
+    </header>
+
+    <div class="job-description-content">
+        <h2 class="job-company">{{ describe.company }}</h2>
+        <h3 class="job-title">{{ describe.title }}</h3>
+        <div class="job-description-text">
+            {{ describe.description|safe }}
+        </div>
+        <div class="job-apply-info mt-4">
+            {% if describe.link %}
+                <a href="{{ describe.link }}" class="btn btn-primary">Apply Now</a>
+            {% else %}
+                <p>Download the job description from the page for more details and application process.</p>
+            {% endif %}
+        </div>
     </div>
-  </div>
+</section>
+
+<style>
+.job-description-container {
+    max-width: 95%;
+    margin: auto;
+    padding: 20px;
+}
+
+.job-description-header h1 {
+    font-size: 2rem;
+    color: #333;
+}
+
+.job-description-content {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.job-company {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #007bff;
+}
+
+.job-title {
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: #333;
+}
+
+.job-description-text {
+    font-size: 1rem;
+    color: #555;
+}
+
+.job-apply-info {
+    margin-top: 20px;
+}
+
+.job-apply-info .btn {
+    font-size: 1rem;
+    padding: 10px 20px;
+}
+</style>
 {% endblock %}

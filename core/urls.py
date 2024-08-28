@@ -1,11 +1,8 @@
 from django.urls import path
 from . import views
-from django.contrib.sitemaps.views import sitemap
-from .sitemap import JobSitemap  # Import only JobSitemap
 
-sitemaps = {
-    'jobs': JobSitemap,
-}
+ # Import only JobSitemap
+
 
 urlpatterns = [
     path('', views.index, name='index'),
@@ -14,5 +11,6 @@ urlpatterns = [
     path('privacy/', views.privacy, name='privacy'),
     path('disclaimer/', views.disclaimer, name='disclaimer'),
     path('success/', views.success, name='success'),
-    path('sitemap.xml', sitemap, {'sitemaps': sitemaps}, name='django.contrib.sitemaps.views.sitemap'),
+    path('robots.txt', views.robots_txt, name='robots_txt'),
+  
 ]

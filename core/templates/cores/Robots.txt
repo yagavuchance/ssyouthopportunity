@@ -1,5 +1,6 @@
 User-agent: *
 Disallow: /admin/
-Allow: /
+Disallow: /login/
+Disallow: /signup/
 
 Sitemap: https://ssyouthopportunities.com/sitemap.xml

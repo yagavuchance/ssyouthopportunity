@@ -6,6 +6,8 @@ from .forms import ContactForm
 from django.contrib import messages
 from django.conf import settings
 from django.core.mail import send_mail
+from django.http import HttpResponse
+from django.template.loader import render_to_string
 # Create your views here.
 
 def index(request):
@@ -79,5 +81,10 @@ def privacy(request):
 
 def disclaimer(request):
     return render(request, 'cores/disclaimer.html')
+
+
+def robots_txt(request):
+    content = render_to_string('cores/robots.txt')
+    return HttpResponse(content, content_type='text/plain')
 
   
