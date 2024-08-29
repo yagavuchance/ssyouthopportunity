@@ -72,9 +72,15 @@
                 <h1></h1>
                 {{ form|crispy }}
                 {{ form.media }}
+            {% if user.is_authenticated %}
                 <div class="d-grid gap-2 mt-3">
                     <button type="submit" class="btn btn-primary mb-2">Send</button>
                 </div>
+            {% else %}
+                <div class="alert alert-warning mt-3" role="alert">
+                    You need to <a  class="text-decoration-none "href="{% url 'login' %}" class="alert-link">log in</a> to send a message.
+                </div>
+            {% endif %}
             </form>
             
         </div>
