@@ -6,7 +6,7 @@ import os
 # Create your views here.
 
 def jobs(request):
-    jobs_list = Jobs.objects.filter(status ='active')
+    jobs_list = Jobs.objects.filter(status ='active').order_by('-created_at')
     context= {
         'jobs_list': jobs_list
     }

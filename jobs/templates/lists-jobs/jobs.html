@@ -8,8 +8,8 @@
 <div class="container mt-5">
     <div class="row">
         <div class="col-md-8">
-            <section id="jobs" class="mb-4">
-                <h2>All Jobs</h2>
+            <section id="jobs" class="section mb-4">
+                <h2 class="section-title">Latest Jobs</h2>
                 <div class="row">
                     {% for job in jobs_list %}
                     <div class="col-md-6 col-sm-12 mb-4">
@@ -33,6 +33,7 @@
                             </div>
                             <div class="card-footer text-muted">
                                
+                            </div>
                         </div>
                     </div>
                     {% empty %}
@@ -40,6 +41,7 @@
                     {% endfor %}
                 </div>
             </section>
+
         </div>
 
         <div class="col-md-4">
