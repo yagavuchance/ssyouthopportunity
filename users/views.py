@@ -56,8 +56,12 @@ def login_user(request):
             user = authenticate(request, username=username, password=password)
             if user is not None:
                 login(request, user)
+                 # Set session data
+                request.session['username'] = username
+                request.session['user_id'] = user.id
                 messages.success(request, f'You have successfully logged in. welcome {username}')
                 return redirect('login_success')
+            
             else:
                 form.add_error(None, 'Invalid username or password')
     else:
@@ -73,6 +77,7 @@ def login_success(request):
 def logout_user(request):
     if request.method =='POST':
      logout(request)
+     request.session.flush() 
      messages.success(request, f'logout successfully')
     return redirect('logout_success')
 
