@@ -50,7 +50,7 @@ def view_post(request, id):
 def edit(request, id):
     job= Jobs.objects.get(pk=id)
     if request.method == "POST":
-        form = JobForm(request.POST, instance=job)
+        form = JobForm(request.POST,  request.FILES, instance=job)
         if form.is_valid():
             form.save()
             messages.success(request, f'Record Updated successfully')
