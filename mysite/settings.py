@@ -54,7 +54,7 @@ CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 CRISPY_TEMPLATE_PACK = "bootstrap5"
 
 
-SESSION_COOKIE_AGE = 60  # Two weeks (in seconds)
+SESSION_COOKIE_AGE = 3600  # Two weeks (in seconds)
 SESSION_EXPIRE_AT_BROWSER_CLOSE = False  # Session persists even after the browser is closed
 
 
