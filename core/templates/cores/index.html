@@ -184,7 +184,7 @@
                 <h3 class="sidebar-title">Recent Jobs</h3>
                 <ul class="list-unstyled">
                     {% for job in jobs_list %}
-                    <a class="text-decoration-none" href="{{job.link}}"><li class="list-group-item text-primary">{{ job.title }}</li></a>
+                    <a class="text-decoration-none" href="#"><li class="list-group-item text-primary">{{ job.title }}</li></a>
                     {% endfor %}
                 </ul>
             </section>
@@ -194,7 +194,7 @@
                 <h3 class="sidebar-title">Recent Scholarships</h3>
                 <ul class="list-unstyled">
                     {% for scholarship in scholarship_list %}
-                    <a class="text-decoration-none" href="{{scholarship.link}}"><li class="list-group-item text-primary">{{ scholarship.title }}</li></a>
+                    <a class="text-decoration-none" href="#"><li class="list-group-item text-primary">{{ scholarship.title }}</li></a>
                     {% empty %}
                     <li>No recent scholarships available.</li>
                     {% endfor %}
@@ -206,7 +206,7 @@
                 <h3 class="sidebar-title">Recent Fellowships</h3>
                 <ul class="list-unstyled">
                     {% for recent_fellowship in recent_fellowships %}
-                    <li><a href="{{ recent_fellowship.link }}">{{ recent_fellowship.title }}</a></li>
+                    <li><a href="#">{{ recent_fellowship.title }}</a></li>
                     {% empty %}
                     <li>No recent fellowships available.</li>
                     {% endfor %}
